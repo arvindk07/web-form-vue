@@ -21,6 +21,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 body {
-  background: rgb(250, 231, 231);
+  background: rgb(236, 233, 233);
 }
 </style>
