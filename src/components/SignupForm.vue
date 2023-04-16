@@ -9,16 +9,40 @@
       <option value="developer">Web Developer</option>
       <option value="designer">Web Designer</option>
     </select>
+    <div class="terms">
+      <input type="checkbox" required v-model="terms" />
+      <label>Terms and conditions</label>
+    </div>
+    <div class="terms">
+      <input type="checkbox" value="dev" v-model="names" />
+      <label>Dev</label>
+    </div>
+    <div class="terms">
+      <input type="checkbox" value="ninja" v-model="names" />
+      <label>Ninja</label>
+    </div>
+    <div class="terms">
+      <input type="checkbox" value="webdev" v-model="names" />
+      <label>Webdev</label>
+    </div>
   </form>
   <p>EMail: {{ email }}</p>
   <p>Password:{{ password }}</p>
   <p>Role: {{ role }}</p>
+  <p>Terms accepted: {{ terms }}</p>
+  <p>Names: {{ names }}</p>
 </template>
 
 <script>
 export default {
   data() {
-    return { email: "mario", password: "", role: "" };
+    return {
+      email: "mario",
+      password: "",
+      role: "designer",
+      terms: "true",
+      names: [],
+    };
   },
 };
 </script>
@@ -49,5 +73,13 @@ select {
   padding: 10px 6px;
   box-sizing: border-box;
   border-bottom: 1px solid #ddd;
+}
+
+input[type="checkbox"] {
+  top: 2px;
+  width: 16px;
+  margin: 0 10px 0 0;
+  position: relative;
+  display: inline-block;
 }
 </style>
