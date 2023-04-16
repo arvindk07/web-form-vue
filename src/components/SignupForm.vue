@@ -11,7 +11,9 @@
     </select>
     <label>Skills:</label>
     <input type="text" v-model="tempSkill" @keyup.alt="addskill" />
-    <div v-for="skill in skills" :key="skill" class="pill">{{ skill }}</div>
+    <div v-for="skill in skills" :key="skill" class="pill">
+      <span @click="deleteSkill(skill)">{{ skill }}</span>
+    </div>
     <div class="terms">
       <input type="checkbox" required v-model="terms" />
       <label>AccepttTerms and conditions</label>
@@ -43,6 +45,12 @@ export default {
         }
         this.tempSkill = "";
       }
+    },
+
+    deleteSkill(skill) {
+      this.skills = this.skills.filter((item) => {
+        return skill !== item;
+      });
     },
   },
 };
@@ -81,6 +89,18 @@ input[type="checkbox"] {
   width: 16px;
   margin: 0 10px 0 0;
   position: relative;
+  display: inline-block;
+}
+.pill {
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  background: #eee;
+  padding: 6px 12px;
+  margin: 20px 10px 0 0;
   display: inline-block;
 }
 </style>
