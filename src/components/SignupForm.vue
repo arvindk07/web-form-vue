@@ -9,28 +9,18 @@
       <option value="developer">Web Developer</option>
       <option value="designer">Web Designer</option>
     </select>
+    <label>Skills:</label>
+    <input type="text" v-model="tempSkill" @keyup.alt="addskill" />
+    <div v-for="skill in skills" :key="skill" class="pill">{{ skill }}</div>
     <div class="terms">
       <input type="checkbox" required v-model="terms" />
-      <label>Terms and conditions</label>
-    </div>
-    <div class="terms">
-      <input type="checkbox" value="dev" v-model="names" />
-      <label>Dev</label>
-    </div>
-    <div class="terms">
-      <input type="checkbox" value="ninja" v-model="names" />
-      <label>Ninja</label>
-    </div>
-    <div class="terms">
-      <input type="checkbox" value="webdev" v-model="names" />
-      <label>Webdev</label>
+      <label>AccepttTerms and conditions</label>
     </div>
   </form>
   <p>EMail: {{ email }}</p>
   <p>Password:{{ password }}</p>
   <p>Role: {{ role }}</p>
   <p>Terms accepted: {{ terms }}</p>
-  <p>Names: {{ names }}</p>
 </template>
 
 <script>
@@ -41,8 +31,19 @@ export default {
       password: "",
       role: "designer",
       terms: "true",
-      names: [],
+      tempSkill: "",
+      skills: [],
     };
+  },
+  methods: {
+    addskill(e) {
+      if (e.key === "," && this.tempSkill) {
+        if (!this.skills.includes(this.tempSkill)) {
+          this.skills.push(this.tempSkill);
+        }
+        this.tempSkill = "";
+      }
+    },
   },
 };
 </script>
